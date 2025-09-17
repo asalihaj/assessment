@@ -44,7 +44,10 @@ public class ToDoTests {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+        options.addArguments("--headless=new"); // modern headless mode
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        // options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get("https://todomvc.com/examples/javascript-es6/dist/");
